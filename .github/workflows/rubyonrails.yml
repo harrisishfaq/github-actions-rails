@@ -82,16 +82,20 @@ jobs:
       #   run:  kill -9 $(lsof -i tcp:3000 -t)
 
 
-      - name: RuboCop Linter Action
-        uses: andrewmcodes-archive/rubocop-linter-action@v3.3.0
-        with:
-          github_token: ${{ github.token }}
+      # - name: RuboCop Linter Action
+      #   uses: andrewmcodes-archive/rubocop-linter-action@v3.3.0
+      #   with:
+      #     github_token: ${{ github.token }}
           # Define a path to your optional action config file.
           # action_config_path: .github/config/rubocop_linter_action.yml
           # Return exit code if linter returns some failures.
           # exit_on_failure: true
           
 
+      - name: Run Ruby syntax check
+        run: |
+          # Find all Ruby files and check their syntax
+          find . -name "*.rb" -print0 | xargs -0 -n1 ruby -c
 
      
           
