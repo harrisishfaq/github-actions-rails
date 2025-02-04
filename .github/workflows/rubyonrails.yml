@@ -65,11 +65,25 @@ jobs:
         with:
           bundler-cache: true
       # Add or replace database setup steps here
+
+      - name: Analyze code statically using Rails Best Practices
+        uses: moneyforward/rails_best_practices-action@v0
+      
       - name: Set up database schema
         run: bin/rails db:schema:load
 
       - name: Run DB migrations
         run: bin/rails db:migrate
+
+      # - name: Rails Syntax check
+      #   run: bin/rails server -p 3000
+
+      # - name: kill rails server
+      #   run:  kill -9 $(lsof -i tcp:3000 -t)
+
+
+     
+          
 
       # Add or replace test runners here
       # - name: Run tests
