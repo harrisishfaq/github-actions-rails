@@ -94,8 +94,10 @@ jobs:
 
       - name: Run Ruby syntax check
         run: |
-          # Find all Ruby files and check their syntax
-          find . -name "*.rb" -print0 | xargs -0 -n1 ruby -c
+          for file in $(find . -name "*.rb"); do
+            ruby -c $file || exit 1
+          done
+        # exit_on_failure: true
 
      
           
