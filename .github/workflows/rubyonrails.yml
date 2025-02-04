@@ -75,11 +75,21 @@ jobs:
       - name: Run DB migrations
         run: bin/rails db:migrate
 
-      - name: Rails Syntax check
-        run: bin/rails server -p 3000
+      # - name: Rails Syntax check
+      #   run: bin/rails server -p 3000
 
-      - name: kill rails server
-        run:  kill -9 $(lsof -i tcp:3000 -t)
+      # - name: kill rails server
+      #   run:  kill -9 $(lsof -i tcp:3000 -t)
+
+
+      - name: RuboCop Linter Action
+        uses: andrewmcodes-archive/rubocop-linter-action@v3.3.0
+        with:
+          # Define a path to your optional action config file.
+          action_config_path: # optional, default is .github/config/rubocop_linter_action.yml
+          # Return exit code if linter returns some failures.
+          exit_on_failure: # optional, default is true
+          
 
 
      
