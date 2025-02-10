@@ -64,3 +64,5 @@ group :development, :test do
   gem 'factory_girl_rails'
   gem 'database_cleaner'
 end
+
+gem 'rubocop', require: false
