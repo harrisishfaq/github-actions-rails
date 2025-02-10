@@ -65,4 +65,4 @@ group :development, :test do
   gem 'database_cleaner'
 end
 
-gem 'rubocop', require: false
+# gem 'rubocop', require: false
